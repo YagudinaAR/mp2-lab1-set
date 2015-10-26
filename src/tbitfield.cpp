@@ -211,14 +211,24 @@ TBitField TBitField::operator~(void) // отрицание
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
 	int len=bf.MemLen;
-	for(int i=0; i<len; i++)
+	char s;
+	int i=0;
+	while(s!=' ')
 	{
-		for(int j=0;j<32;j++)
+		istr>>s;
+		if(s=='1')
 		{
-			if();
+			bf.SetBit(i++);
+		}
+		else
 
-
-
+		if(s=='0')
+		{
+			bf.ClrBit(i++);
+		}
+		else
+			break;
+	}
 	return istr;
 }
 	
@@ -237,5 +247,3 @@ ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 	}
 	return ostr;
 }
-
-};
