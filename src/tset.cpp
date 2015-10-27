@@ -7,7 +7,7 @@
 
 #include "tset.h"
 
-TSet::TSet(int mp) : BitField(-1)
+TSet::TSet(int mp) : BitField(mp)
 {
 }
 
@@ -33,15 +33,17 @@ int TSet::GetMaxPower(void) const // получить макс. к-во эл-т�
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {
-    return 0;
+    return BitField.GetBit(Elem);
 }
 
 void TSet::InsElem(const int Elem) // включение элемента множества
 {
+	BitField.SetBit(Elem);
 }
 
 void TSet::DelElem(const int Elem) // исключение элемента множества
 {
+	BitField.ClrBit(Elem);
 }
 
 // теоретико-множественные операции
@@ -65,7 +67,8 @@ int TSet::operator!=(const TSet &s) const // сравнение
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
-
+	TSet temp(BitField | s.BitField);
+	return temp;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
@@ -74,15 +77,19 @@ TSet TSet::operator+(const int Elem) // объединение с элемент
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
+
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
+	TSet temp(BitField & s.BitField);
+	return temp;
 }
 
 TSet TSet::operator~(void) // дополнение
 {
-	
+	TSet temp(~BitField);
+	return temp;
 }
 
 // перегрузка ввода/вывода
