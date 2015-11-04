@@ -23,7 +23,7 @@ TSet::TSet(const TBitField &bf) : BitField(bf), MaxPower(bf.GetLength())
 
 TSet::operator TBitField()
 {
-	return NULL;
+	return BitField;
 }
 
 int TSet::GetMaxPower(void) const // получить макс. к-во эл-тов
@@ -33,7 +33,8 @@ int TSet::GetMaxPower(void) const // получить макс. к-во эл-т�
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {
-    return BitField.GetBit(Elem);
+	return (BitField.GetBit(Elem));
+   
 }
 
 void TSet::InsElem(const int Elem) // включение элемента множества
@@ -57,12 +58,13 @@ TSet& TSet::operator=(const TSet &s) // присваивание
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
-    return (BitField==s.BitField);
+	return (BitField == s.BitField);
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
 	return (BitField != s.BitField);
+
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
@@ -83,7 +85,7 @@ TSet TSet::operator-(const int Elem) // разность с элементом
 	TSet temp(BitField);
 	temp.BitField.ClrBit(Elem);
 	return temp;
-	return 0;
+	
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
@@ -139,4 +141,4 @@ ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 	return ostr;
 }
 
-}
+
