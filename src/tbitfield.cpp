@@ -179,7 +179,7 @@ TBitField TBitField::operator~(void) // отрицание
 	{
 		temp.pMem[i] = ~pMem[i];
 	}
-	for (int i = (MemLen - 1)*sizeof(TELEM); i < BitLen; i++)
+	for (int i = (MemLen - 1)*sizeof(TELEM); i < BitLen; i++)// проверка последнего элемента,т.к. кол-во элементов не всегда кратно кол-ву байтов типа
 	{
 		if ((*this).GetBit(i) == 0)
 	        temp.SetBit(i);
