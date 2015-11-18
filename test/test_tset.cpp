@@ -56,7 +56,7 @@ TEST(TSet, compare_two_sets_of_non_equal_sizes)
   const int size1 = 4, size2 = 6;
   TSet set1(size1), set2(size2);
 
-  EXPECT_EQ(1, set1 == set2);
+  EXPECT_EQ(1, set1 != set2);
 }
 
 TEST(TSet, compare_two_equal_sets)
